@@ -20,12 +20,20 @@ print(recipes)
 def canonicalize(ing):
     return ing.lower().strip()
 
-recipes["ing_str"] = recipes["ingredients"].apply(lambda lst: " ".join(sorted(set(canonicalize(x) for x in lst))))
-vectorizer = TfidfVectorizer(token_pattern=r"(?u)\b\w+\b")
+recipes["ing_str"] = recipes["ingredients"].apply(
+    lambda lst: " ".join(canonicalize(x) for x in lst)
+)
+
+vectorizer = TfidfVectorizer(
+    token_pattern=r"(?u)\b\w+\b",
+    ngram_range=(1, 2)
+)
+
 tfidf_matrix = vectorizer.fit_transform(recipes["ing_str"])
 
 def strip_quant(s):
     return re.sub(r"[\d/]+|ml|g|kg|cup|cups|tbsp|tsp", "", s, flags=re.I).strip()
+
 
 def suggest_recipes(user_ingredients, top_k=5, min_score=0.1):
     user_tokens = [canonicalize(strip_quant(x)) for x in user_ingredients if x.strip()]
@@ -57,7 +65,7 @@ def index():
     if request.method == "POST":
         user_input = request.form["ingredients"]
         user_ingredients = [x.strip() for x in user_input.split(",")]
-        results = suggest_recipes(user_ingredients, top_k=5)
+        results = suggest_recipes(user_ingredients, top_k=5, min_score=0.0)
         return render_template("results.html", results=results, user_ingredients=user_ingredients)
     return render_template("index.html")
 
