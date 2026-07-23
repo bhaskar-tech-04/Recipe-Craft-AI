@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites - Recipe Craft AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header>
+        <a class="logo" href="index.html">Recipe Craft AI</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="recipe.html">Create Recipe</a>
+            <a href="history.html">History</a>
+            <a href="favorites.html" class="active">Favorites</a>
+        </nav>
+    </header>
+    <main>
+        <section class="page-header">
+            <div>
+                <span class="eyebrow">Your go-to recipes</span>
+                <h1>Favorites</h1>
+                <p>Save your favorite generated recipes and revisit them anytime.</p>
+            </div>
+        </section>
+        <section class="panel">
+            <div id="favoritesList" class="empty-state">No favorites yet.</div>
+        </section>
+    </main>
+    <script src="js/favorites.js"></script>
+</body>
+</html>

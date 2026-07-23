@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Recipe - Recipe Craft AI</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header>
+        <div class="logo">Recipe Craft AI</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="recipe.html" class="active">Create Recipe</a>
+        </nav>
+    </header>
+
+    <main class="recipe-page">
+        <section class="recipe-panel">
+            <h1>Create your best recipe</h1>
+            <p>Type your ingredients and some extra details, then click Generate to get a complete recipe with image and cooking steps.</p>
+            <form id="recipeForm" class="simple-form">
+                <label for="prompt">Ingredients</label>
+                <textarea id="prompt" rows="5" placeholder="e.g. chicken, rice, tomato, onion"></textarea>
+
+                <div class="grid-two">
+                    <div class="field-group">
+                        <label for="cuisine">Cuisine</label>
+                        <select id="cuisine">
+                            <option value="Indian">Indian</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Mexican">Mexican</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="American">American</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label for="diet">Diet</label>
+                        <select id="diet">
+                            <option value="Vegetarian">Vegetarian</option>
+                            <option value="Vegan">Vegan</option>
+                            <option value="Keto">Keto</option>
+                            <option value="Paleo">Paleo</option>
+                            <option value="Gluten-free">Gluten-free</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <span class="section-label">Cooking time</span>
+                    <div class="option-grid">
+                        <label class="option-pill">
+                            <input type="radio" name="time" value="Under 15 min" checked />
+                            <span>Under 15 min</span>
+                        </label>
+                        <label class="option-pill">
+                            <input type="radio" name="time" value="Under 30 min" />
+                            <span>Under 30 min</span>
+                        </label>
+                        <label class="option-pill">
+                            <input type="radio" name="time" value="Under 1 hour" />
+                            <span>Under 1 hour</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="section-block servings-block">
+                    <span class="section-label">Servings</span>
+                    <div class="counter-group">
+                        <button type="button" class="counter-btn" id="decreaseServings">-</button>
+                        <input id="servings" type="number" min="1" value="2" readonly />
+                        <button type="button" class="counter-btn" id="increaseServings">+</button>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <span class="section-label">Spice level</span>
+                    <div class="spice-grid">
+                        <label class="spice-option">
+                            <input type="radio" name="spice" value="Mild" />
+                            <span class="spice-dot"></span>
+                            Mild
+                        </label>
+                        <label class="spice-option">
+                            <input type="radio" name="spice" value="Medium" checked />
+                            <span class="spice-dot"></span>
+                            Medium
+                        </label>
+                        <label class="spice-option">
+                            <input type="radio" name="spice" value="Hot" />
+                            <span class="spice-dot"></span>
+                            Hot
+                        </label>
+                    </div>
+                </div>
+
+                <label for="details">Extra instructions</label>
+                <textarea id="details" rows="3" placeholder="No peanuts, high protein, less oil..."></textarea>
+
+                <button type="submit" class="primary-btn">✨ Generate Recipe</button>
+            </form>
+        </section>
+
+        <section class="result-panel" id="recipeResult">
+            <div class="empty-state">
+                <h2>Recipe result will appear here</h2>
+                <p>Fill the form and press Generate to see the recipe image, ingredients, and cooking steps.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
