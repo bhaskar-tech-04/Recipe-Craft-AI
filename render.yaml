@@ -3,10 +3,14 @@ services:
     name: recipe-craft-ai
     env: python
     plan: free
-    buildCommand: "pip install -r backend/requirements.txt"
-    startCommand: "python backend/app.py"
+
+    buildCommand: pip install -r backend/requirements.txt
+
+    startCommand: gunicorn backend.app:app
+
     envVars:
-      - key: DATABASE_URL
-        fromDatabase: recipe-craft-ai-db
       - key: OPENAI_API_KEY
-        fromFile: .env
+        sync: false
+
+      - key: GEMINI_API_KEY
+        sync: false
